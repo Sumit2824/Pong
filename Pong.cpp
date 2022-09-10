@@ -83,6 +83,7 @@ int main()
         {
             //reverse the ball direction
             ball.reboundBottom();
+            lives--;
 
             //remove a life
             if (lives < 1)
@@ -98,11 +99,18 @@ int main()
             score++;
         }
         //handle ball hitting sides
-        if (ball.getPosition().left < 0 || ball.getPosition().width > window.getSize().x)
+        if (ball.getPosition().left < 0 || ball.getPosition().left + ball.getPosition().width > window.getSize().x)
         {
             ball.reboundSides();
         }
-
+        
+        // ball hit the bat
+        if (ball.getPosition().intersects(bat.getPosition()))
+        {
+            ball.reboundBatOrTop();
+        }
+        
+        
         window.clear();
 
         window.draw(hud);

@@ -109,7 +109,7 @@ int main()
         {
             ball.reboundBatOrTop();
         }
-        
+
         
         window.clear();
 
